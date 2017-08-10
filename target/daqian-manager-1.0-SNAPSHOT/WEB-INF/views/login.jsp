@@ -56,8 +56,8 @@
                     <div class="center">
                         <h1>
                             <i class="icon-leaf green"></i>
-                            <span class="red">Ace</span>
-                            <span class="white">Application</span>
+                            <span class="red">Leaf</span>
+                            <span class="white">个人网站</span>
                         </h1>
                         <h4 class="blue">&copy; Company Name</h4>
                     </div>

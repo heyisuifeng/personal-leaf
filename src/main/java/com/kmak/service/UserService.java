@@ -18,4 +18,9 @@ public class UserService {
     public boolean login(User user){
         return userRepository.login(user);
     }
+
+    public User getUserByUsername(String username){
+        User user = new User();
+        return user;
+    }
 }
