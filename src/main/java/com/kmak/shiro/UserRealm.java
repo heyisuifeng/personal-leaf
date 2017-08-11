@@ -31,7 +31,7 @@ public class UserRealm extends AuthorizingRealm{
         setName("UserRealm");
     }
 
-    @Override
+      @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
     }
@@ -72,6 +72,6 @@ public class UserRealm extends AuthorizingRealm{
         SecurityUtils.getSubject().getSession().setAttribute("currentUser",user);
         //获取所有菜单权限，用于权限校验时，没有存储在权限表中的url的权限不进行判断
         SecurityUtils.getSubject().getSession().setAttribute("allPermissions", "");
-        return null;
+        return info;
     }
 }

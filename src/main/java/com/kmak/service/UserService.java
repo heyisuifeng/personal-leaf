@@ -21,6 +21,10 @@ public class UserService {
 
     public User getUserByUsername(String username){
         User user = new User();
+        user.setUsername("admin");
+        user.setPassword("admin");
+        user.setIsLock(true);
+        user.setId(1);
         return user;
     }
 }

@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 var login = {
     request: {
-        "userName": "",
+        "username": "",
         "password": ""
     },
 
