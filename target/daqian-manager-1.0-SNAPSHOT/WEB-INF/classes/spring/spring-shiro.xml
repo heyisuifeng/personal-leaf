@@ -21,39 +21,14 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login"/>
         <property name="successUrl" value="/index"/>
-        <!--<property name="unauthorizedUrl" value="/unauthor"/>-->
-        <!--<property name="filters">
-            <util:map>
-                <entry key="formLoginFilter" value-ref="formLoginFilter"/>
-                &lt;!&ndash;<entry key="resourceCheckFilter" value-ref="userFilter"/>&ndash;&gt;
-            </util:map>
-        </property>-->
+        <property name="unauthorizedUrl" value="/unauthor"/>
         <!--authc登陆认证  user用户认证检查 logout退出 filter-->
         <property name="filterChainDefinitions">
             <value>
-                /=anon
-                /QueryString/**=anon
-                /login=anon
-                /merLogin=anon
-                /favicon.ico=anon
-                /index=anon<!--,formLoginFilter-->
-                /merIndex=anon<!--,formLoginFilter-->
-                /home=anon<!--,formLoginFilter-->
-                /doLogin=anon
-                /unauthor=anon
-                /logout=anon
-                /merLogout=anon
-                /resources/**=anon
-                /401.html=anon
-                /403.html=anon
-                /404.html=anon
-                /error=anon
-                /loan/*=anon
-                /cms/*=anon
-                /excel/*=anon
-                /pkTask/receiveTask=anon
-                /pkTask/sendTask=anon
-                /**=user<!--,resourceCheckFilter-->
+                /assets/** = anon
+                /login = anon
+                /index = authc
+                /dropzone/** = authc,roles[管理员]
             </value>
         </property>
     </bean>

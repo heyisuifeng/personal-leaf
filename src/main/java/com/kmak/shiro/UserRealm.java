@@ -6,12 +6,15 @@ import com.kmak.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
+import java.util.Set;
 
 /******************************************************
  *Copyrights @ 2017，xiaowo  Co., Ltd.
@@ -31,9 +34,15 @@ public class UserRealm extends AuthorizingRealm{
         setName("UserRealm");
     }
 
-      @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+    //权限资源角色
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        String username = (String)principals.getPrimaryPrincipal();
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        Set<String> permissionsSet = new HashSet<>();
+        permissionsSet.add("/dropzone");
+        info.setStringPermissions(permissionsSet);
+        return info;
     }
 
     /**
