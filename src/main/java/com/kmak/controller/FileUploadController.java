@@ -19,7 +19,8 @@ public class FileUploadController {
     private static final String CONTENY_TYPE = "multipart/form-data";
 
     @RequestMapping("/dropzone")
-    public String index(){
+    @RequiresPermissions("/dropzone")
+    public String index(HttpServletRequest request){
         return "dropzone";
     }
 

@@ -41,7 +41,7 @@ public class UserRealm extends AuthorizingRealm{
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Set<String> permissionsSet = new HashSet<>();
-        permissionsSet.add("/dropzone");
+        //permissionsSet.add("/dropzone");
         info.setStringPermissions(permissionsSet);
         return info;
     }
@@ -77,8 +77,6 @@ public class UserRealm extends AuthorizingRealm{
         }
 
         SecurityUtils.getSubject().getSession().setAttribute("currentUser",user);
-        //用户角色放入session
-        SecurityUtils.getSubject().getSession().setAttribute("roles", "");
 
         //用info 中的password 比较  token 中的password  密码比较
         SimpleAuthenticationInfo info =

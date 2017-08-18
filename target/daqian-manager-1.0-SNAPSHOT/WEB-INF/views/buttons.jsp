@@ -535,10 +535,12 @@
                         </li>
 
                         <li>
-                            <a href="dropzone.html">
-                                <i class="icon-double-angle-right"></i>
-                                文件上传
-                            </a>
+                            <shiro:hasPermission name="/dropzone">
+                                <a href="dropzone">
+                                    <i class="icon-double-angle-right"></i>
+                                    文件上传
+                                </a>
+                            </shiro:hasPermission>
                         </li>
                     </ul>
                 </li>

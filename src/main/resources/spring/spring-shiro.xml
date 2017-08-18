@@ -28,8 +28,8 @@
                 /assets/** = anon
                 /login = anon
                 /index = authc
-                /dropzone/** = authc,roles[管理员]
-                /** = user
+                <!--/dropzone/** = authc,roles[管理员]-->
+                /** = authc
             </value>
         </property>
     </bean>

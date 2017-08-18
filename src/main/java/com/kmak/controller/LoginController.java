@@ -1,5 +1,7 @@
 package com.kmak.controller;
 
+import com.kmak.entity.Menu;
+import com.kmak.service.MenuService;
 import com.kmak.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -10,9 +12,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +28,7 @@ import java.util.Map;
 public class LoginController {
 
     @Inject
-    private UserService userService;
+    private MenuService menuService;
 
     @RequestMapping(value = {"login","/"})
     public String login(){
@@ -31,8 +36,12 @@ public class LoginController {
     }
 
     @RequestMapping("/index")
-    public String index(){
-        return "index";
+    public ModelAndView index(){
+        List<Menu> menuList = menuService.getMenuListByRoleId(1);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("menuList",menuList);
+        mv.setViewName("index");
+        return mv;
     }
 
     @RequestMapping(value = "login",method = RequestMethod.POST)
