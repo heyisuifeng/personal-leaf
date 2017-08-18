@@ -29,6 +29,7 @@
                 /login = anon
                 /index = authc
                 /dropzone/** = authc,roles[管理员]
+                /** = user
             </value>
         </property>
     </bean>

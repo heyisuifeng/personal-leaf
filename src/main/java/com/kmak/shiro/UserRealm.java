@@ -38,6 +38,7 @@ public class UserRealm extends AuthorizingRealm{
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String)principals.getPrimaryPrincipal();
+
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Set<String> permissionsSet = new HashSet<>();
         permissionsSet.add("/dropzone");
@@ -75,12 +76,13 @@ public class UserRealm extends AuthorizingRealm{
             throw new LockedAccountException("帐号被锁定");
         }
 
+        SecurityUtils.getSubject().getSession().setAttribute("currentUser",user);
+        //用户角色放入session
+        SecurityUtils.getSubject().getSession().setAttribute("roles", "");
+
         //用info 中的password 比较  token 中的password  密码比较
         SimpleAuthenticationInfo info =
                 new SimpleAuthenticationInfo(username,user.getPassword(), ByteSource.Util.bytes(username),getName());
-        SecurityUtils.getSubject().getSession().setAttribute("currentUser",user);
-        //获取所有菜单权限，用于权限校验时，没有存储在权限表中的url的权限不进行判断
-        SecurityUtils.getSubject().getSession().setAttribute("allPermissions", "");
         return info;
     }
 }
