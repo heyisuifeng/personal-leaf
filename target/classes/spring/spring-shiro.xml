@@ -22,6 +22,11 @@
         <property name="loginUrl" value="/login"/>
         <property name="successUrl" value="/index"/>
         <property name="unauthorizedUrl" value="/unauthor"/>
+        <property name="filters">
+            <util:map>
+                <entry key="customFilter" value-ref="customFilter"/>
+            </util:map>
+        </property>
         <!--authc登陆认证  user用户认证检查 logout退出 filter-->
         <property name="filterChainDefinitions">
             <value>
@@ -29,13 +34,15 @@
                 /login = anon
                 /index = authc
                 <!--/dropzone/** = authc,roles[管理员]-->
-                /** = authc
+                /** = customFilter
             </value>
         </property>
     </bean>
 
     <!-- 认证filter -->
-    <bean id="formLoginFilter" class="com.kmak.shiro.filter.FormLoginFilter">
+    <bean id="customFilter" class="com.kmak.shiro.filter.CustomAuthenticationFilter">
+        <property name="unauthorizedUrl" value="/login"/>
+        <property name=""
     </bean>
 
     <!-- 会话管理器 -->

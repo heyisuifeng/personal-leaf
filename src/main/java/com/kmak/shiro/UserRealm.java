@@ -41,7 +41,7 @@ public class UserRealm extends AuthorizingRealm{
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Set<String> permissionsSet = new HashSet<>();
-        //permissionsSet.add("/dropzone");
+        permissionsSet.add("/dropzone");
         info.setStringPermissions(permissionsSet);
         return info;
     }
