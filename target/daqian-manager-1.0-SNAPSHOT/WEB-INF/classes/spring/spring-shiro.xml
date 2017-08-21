@@ -42,7 +42,6 @@
     <!-- 认证filter -->
     <bean id="customFilter" class="com.kmak.shiro.filter.CustomAuthenticationFilter">
         <property name="unauthorizedUrl" value="/login"/>
-        <property name=""
     </bean>
 
     <!-- 会话管理器 -->
