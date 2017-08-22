@@ -22,11 +22,11 @@
         <property name="loginUrl" value="/login"/>
         <property name="successUrl" value="/index"/>
         <property name="unauthorizedUrl" value="/unauthor"/>
-        <property name="filters">
+        <!--<property name="filters">
             <util:map>
                 <entry key="customFilter" value-ref="customFilter"/>
             </util:map>
-        </property>
+        </property>-->
         <!--authc登陆认证  user用户认证检查 logout退出 filter-->
         <property name="filterChainDefinitions">
             <value>
@@ -34,7 +34,7 @@
                 /login = anon
                 /index = authc
                 <!--/dropzone/** = authc,roles[管理员]-->
-                /** = customFilter
+                /** = authc
             </value>
         </property>
     </bean>
@@ -55,7 +55,14 @@
     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
         <property name="cacheManagerConfigFile" value="classpath:spring/ehcache.xml"/>
     </bean>
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+
+    <!-- 如果要使用注解必须加入下面三个bean，并且在spring mvc中加入<aop:config proxy-target-class="true"/>开启切面支持-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
         <property name="proxyTargetClass" value="true"></property>
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
     </bean>
 </beans>

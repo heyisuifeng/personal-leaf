@@ -34,7 +34,7 @@
     </div>
 
     <div class="page-content">
-        <iframe id="iframe"  scrolling="auto" style="border: 0; width: 100%; background-color: #FFF;"  frameborder="0" src=""></iframe>
+        <iframe id="rightFrame" name="rightFrame"  scrolling="auto" style="border: 0; width: 100%; background-color: #FFF;"  frameborder="0" src="/user/home"></iframe>
     </div>
     <%--<div class="page-content">
         <div class="page-header">

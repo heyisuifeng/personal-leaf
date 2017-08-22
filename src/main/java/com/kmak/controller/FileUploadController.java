@@ -21,12 +21,12 @@ public class FileUploadController {
     @RequestMapping("/dropzone")
     @RequiresPermissions("/dropzone")
     public String index(HttpServletRequest request){
-        return "dropzone";
+        return "other/dropzone";
     }
 
     @RequestMapping(value = "/file/upload",method = RequestMethod.POST)
     public String fileUpload(HttpServletRequest request, @RequestParam(value = "myFile",required = false)MultipartFile[] files){
-        return "dropzone";
+        return "other/dropzone";
     }
 
     public static String uploadFile(String url, final InputStream in, final String  mimeTpe){

@@ -83,4 +83,9 @@ public class LoginController {
         }
         return "login";
     }
+
+    @RequestMapping(value = "/unauthor")
+    public String unauthor(){
+        return "error/unauthor";
+    }
 }

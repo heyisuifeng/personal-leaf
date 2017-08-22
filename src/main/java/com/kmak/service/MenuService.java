@@ -24,9 +24,14 @@ public class MenuService {
     public List<Menu> getMenuListByRoleId(int id){
         List<Menu> menuList = new ArrayList<>();
         Menu menu = new Menu();
-        menu.setMenuName("用户管理");
-        menu.setUrl("/user/home");
+        menu.setMenuName("系统管理");
         menuList.add(menu);
+        Menu submenu = new Menu();
+        submenu.setMenuName("用户管理");
+        submenu.setUrl("/user/home");
+        List<Menu> submenuList = new ArrayList<>();
+        submenuList.add(submenu);
+        menu.setSubMenuList(submenuList);
         return menuList;
     }
 }
