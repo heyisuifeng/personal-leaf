@@ -42,6 +42,7 @@ public class UserRealm extends AuthorizingRealm{
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Set<String> permissionsSet = new HashSet<>();
         permissionsSet.add("/user/home");
+        permissionsSet.add("/role/home");
         info.setStringPermissions(permissionsSet);
         return info;
     }

@@ -25,13 +25,17 @@ public class MenuService {
         List<Menu> menuList = new ArrayList<>();
         Menu menu = new Menu();
         menu.setMenuName("系统管理");
-        menuList.add(menu);
         Menu submenu = new Menu();
         submenu.setMenuName("用户管理");
         submenu.setUrl("/user/home");
+        Menu submenu1 = new Menu();
+        submenu1.setMenuName("角色管理");
+        submenu1.setUrl("/role/home");
         List<Menu> submenuList = new ArrayList<>();
         submenuList.add(submenu);
+        submenuList.add(submenu1);
         menu.setSubMenuList(submenuList);
+        menuList.add(menu);
         return menuList;
     }
 }

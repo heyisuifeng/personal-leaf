@@ -57,72 +57,62 @@
     </script>
 
     <ul class="nav nav-list">
-        <%--<c:if test="${not empty menuList}">--%>
-            <c:forEach items="${menuList}" var="menu" varStatus="status">
-                <li class="active">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="icon-desktop"></i>
-                        <span class="menu-text">${menu.menuName}</span>
-
-                        <b class="arrow icon-angle-down"></b>
-                    </a>
-
-                        <c:forEach items="${menu.subMenuList}" var="subMenu" varStatus="step">
-                            <ul class="submenu">
-                                <li>
-                                    <a href="${subMenu.url}" target="rightFrame">
-                                        <i class="icon-double-angle-right"></i>
-                                        ${subMenu.menuName}
-                                    </a>
-                                </li>
-
-                                    <%--<li>
-                                        <a href="#" class="dropdown-toggle">
-                                            <i class="icon-double-angle-right"></i>
-
-                                            三级菜单
-                                            <b class="arrow icon-angle-down"></b>
-                                        </a>
-
-                                        <ul class="submenu">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="icon-leaf"></i>
-                                                    第一级
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a href="#" class="dropdown-toggle">
-                                                    <i class="icon-pencil"></i>
-
-                                                    第四级
-                                                    <b class="arrow icon-angle-down"></b>
-                                                </a>
-
-                                                <ul class="submenu">
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="icon-plus"></i>
-                                                            添加产品
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="icon-eye-open"></i>
-                                                            查看商品
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>--%>
-                            </ul>
-                        </c:forEach>
-                </li>
-            </c:forEach>
-</ul>
+        <c:forEach items="${menuList}" var="menu" varStatus="status">
+            <li class="active">
+                <a href="#" class="dropdown-toggle">
+                    <i class="icon-desktop"></i>
+                    <span class="menu-text">${menu.menuName}</span>
+                    <b class="arrow icon-angle-down"></b>
+                </a>
+                <ul class="submenu">
+                    <c:forEach items="${menu.subMenuList}" var="subMenu" varStatus="step">
+                        <li>
+                            <a href="${subMenu.url}" target="rightFrame">
+                                <i class="icon-double-angle-right"></i>
+                                    ${subMenu.menuName}
+                            </a>
+                        </li>
+                        <%--<li>
+                                       <a href="#" class="dropdown-toggle">
+                                           <i class="icon-double-angle-right"></i>
+                                           三级菜单
+                                           <b class="arrow icon-angle-down"></b>
+                                       </a>
+                                       <ul class="submenu">
+                                           <li>
+                                               <a href="#">
+                                                   <i class="icon-leaf"></i>
+                                                   第一级
+                                               </a>
+                                           </li>
+                                           <li>
+                                               <a href="#" class="dropdown-toggle">
+                                                   <i class="icon-pencil"></i>
+                                                   第四级
+                                                   <b class="arrow icon-angle-down"></b>
+                                               </a>
+                                               <ul class="submenu">
+                                                   <li>
+                                                       <a href="#">
+                                                           <i class="icon-plus"></i>
+                                                           添加产品
+                                                       </a>
+                                                   </li>
+                                                   <li>
+                                                       <a href="#">
+                                                           <i class="icon-eye-open"></i>
+                                                           查看商品
+                                                       </a>
+                                                   </li>
+                                               </ul>
+                                           </li>
+                                       </ul>
+                                   </li>--%>
+                    </c:forEach>
+                </ul>
+            </li>
+        </c:forEach>
+    </ul>
 
 </div>
 
