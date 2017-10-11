@@ -1,0 +1,48 @@
+输入框金额格式化功能，如输入10000，格式化为10,000
+<script>
+    $(function () {
+
+        $("#inp-monthIncome").keyup(function(){
+            var monthIncome = $.trim($("#inp-monthIncome").val());
+            //去掉前导0
+            monthIncome = monthIncome.replace(/^0+/,"");
+            //去掉非数字字符
+            monthIncome = monthIncome.replace(/[^0-9]/g,"");
+            if (monthIncome.length>0){
+                monthIncome = formatNum(monthIncome);
+            }
+            console.log(monthIncome);
+            $("#inp-monthIncome").val(monthIncome);
+        });
+
+        function formatNum(str){
+            var newStr = "";
+            var count = 0;
+
+            if(str.indexOf(".")==-1){
+                for(var i=str.length-1;i>=0;i--){
+                    if(count % 3 == 0 && count != 0){
+                        newStr = str.charAt(i) + "," + newStr;
+                    }else{
+                        newStr = str.charAt(i) + newStr;
+                    }
+                    count++;
+                }
+                str = newStr + ""; //自动补小数点后两位
+                console.log(str)
+            } else {
+                for(var i = str.indexOf(".")-1;i>=0;i--){
+                    if(count % 3 == 0 && count != 0){
+                        newStr = str.charAt(i) + "," + newStr;
+                    }else{
+                        newStr = str.charAt(i) + newStr; //逐个字符相接起来
+                    }
+                    count++;
+                }
+                str = newStr + (str + "00").substr((str + "00").indexOf("."),3);
+                console.log(str)
+            }
+            return str;
+        };
+    })
+</script>
